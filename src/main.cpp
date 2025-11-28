@@ -47,7 +47,7 @@ void importLevel(std::string const& fileName) {
         
         LocalLevelManager::sharedState()->m_localLevels->insertObject(level, 0);
 		std::string cLevel = mainLevels[cpage];
-		std::string message = fmt::format("Copied level {}", cLevel);
+		std::string message = fmt::format("Copied {}!", cLevel);
 
         FLAlertLayer::create("Success", message, "OK")->show();
     } 
@@ -104,7 +104,7 @@ class $modify(CMLbsc, BoomScrollLayer) {
 
 	void updPageN(float dt) {
 		cpage = (m_page % 24 + 24) % 24;
-		log::info("page: {}", cpage);
+		// log::info("page: {}", cpage);
 	}
 
 };
