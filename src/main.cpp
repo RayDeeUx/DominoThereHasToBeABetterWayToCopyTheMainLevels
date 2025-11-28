@@ -43,7 +43,7 @@ void importLevel(std::string const& fileName) {
     if (result.isOk()) {
         auto level = result.unwrap();
 
-        level->m_levelType = GJLevelType::Editor; // Ensures it shows in the "Create" list
+        level->m_levelType = GJLevelType::Editor;
         
         LocalLevelManager::sharedState()->m_localLevels->insertObject(level, 0);
 		std::string cLevel = mainLevels[cpage];
