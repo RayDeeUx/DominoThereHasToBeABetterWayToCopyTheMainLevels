@@ -70,6 +70,17 @@ std::string fixLevelName(const std::string& inputValue) {
 		}
 	}
 	return inputValue;
+        level->m_levelType = GJLevelType::Editor;
+        
+        LocalLevelManager::sharedState()->m_localLevels->insertObject(level, 0);
+		std::string cLevel = mainLevels[cpage];
+		std::string message = fmt::format("Copied {}!", cLevel);
+
+        FLAlertLayer::create("Success", message, "OK")->show();
+    } 
+    else {
+        FLAlertLayer::create("Error", "An error occured. Please report this to @DominoKiddoo on discord", "OK")->show();
+    }
 }
 
 
