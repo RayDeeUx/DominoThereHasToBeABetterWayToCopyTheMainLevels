@@ -8,7 +8,7 @@ To copy a main level, click on <cy>the info button</cy> then the copy button <cr
 Some level names are **shortened** when copied as they do not fit into the character limit
 
 ### Upcoming features
-I will <cr>eventually</cr> add support for the tower, the challenge and **maybe** the spin-off levels.
+I will <cr>eventually</cr> the challenge and **maybe** the spin-off levels.
 
 # Bugs
 Send them to <cy>@DominoKiddoo</cy> on discord
