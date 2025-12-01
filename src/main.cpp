@@ -11,6 +11,7 @@
 using namespace geode::prelude;
 
 int cpage = 0;
+std::string alertHeader = "";
 
 std::vector<std::string> mainLevels = {
 	"Stereo Madness",
@@ -34,7 +35,18 @@ std::vector<std::string> mainLevels = {
 	"Geometrical Dominato",
 	"Deadlocked",
 	"Fingerdash",
-	"Dash"
+	"Dash",
+    "The Tower",
+    "The Sewers",
+    "The Cellar",
+    "The Secret Hollow"
+};
+
+std::vector<std::string> otherAllowedLevels = {
+    "The Tower",
+    "The Sewers",
+    "The Cellar",
+    "The Secret Hollow"
 };
 
 static std::map<std::string, std::string> levelMapping = {
@@ -59,7 +71,12 @@ static std::map<std::string, std::string> levelMapping = {
 	{"Geometrical Dominator", "Geometrical Dominato"},
 	{"Deadlocked", "Deadlocked"},
 	{"Fingerdash", "Fingerdash"},
-	{"Dash", "Dash"}
+	{"Dash", "Dash"},
+    {"The Tower", "The Tower"},
+    {"The Cellar", "The Cellar"},
+    {"The Sewers", "The Sewers"},
+    {"The Secret Hollow", "The Secret Hollow"}
+
 };
 
 std::string fixLevelName(const std::string& inputValue) {
@@ -114,12 +131,15 @@ class $modify(InfoPopupHook, FLAlertLayer) {
 		if (!FLAlertLayer::init(p0, title, desc, btn1, btn2, width, scroll, height, textScale))
 			return false;
 
-		if (!title || !levelMapping.count(title))
+        log::info("{}", desc);
+    
+		if (!title || !levelMapping.count(title)) {
 			return true;
+        }
 
 		auto mainLayer = this->getChildByID("main-layer");
 		auto bg = mainLayer ? mainLayer->getChildByID("background") : nullptr;
-
+        alertHeader = title;
 		auto cButton = CCMenuItemSpriteExtra::create(
 			CCSprite::createWithSpriteFrameName("GJ_duplicateBtn_001.png"),
 			this,
@@ -138,12 +158,16 @@ class $modify(InfoPopupHook, FLAlertLayer) {
 	}
 
 	void onCopyMainLevel(CCObject*) {
-		if (cpage != 22 && cpage != 23) {
-			std::string cLevel = mainLevels[cpage];
-			importLevel(cLevel);
-		}
-		else {
-			FLAlertLayer::create("Error", fmt::format("You are not on a page with a level!"), "OK")->show();
+        if (cpage != 22 && cpage != 23) {
+            std::string cLevel = mainLevels[cpage];
+            importLevel(cLevel);
+        } else {
+            if  (std::find(otherAllowedLevels.begin(), otherAllowedLevels.end(), alertHeader) != otherAllowedLevels.end()) {
+                importLevel(alertHeader);
+            } else {
+                FLAlertLayer::create("Error", fmt::format("You are not on a page with a level!"), "OK")->show();
+            }
+			
 		}
 	}
 };

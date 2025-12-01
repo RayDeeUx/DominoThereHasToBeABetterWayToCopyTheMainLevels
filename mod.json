@@ -8,12 +8,13 @@
 	},
 	"id": "dominodev.copymainlevels",
 	"name": "Copy Main Levels",
-	"version": "v1.0.2",
+	"version": "v1.0.3",
 	"developer": "dominodev",
 	"description": "Copy main levels directly from their pages.",
 	"dependencies": {
 		"geode.node-ids": ">=v1.20.0",
-		"hjfod.gmd-api":  ">=1.4.1"
+		"hjfod.gmd-api":  ">=1.4.1",
+		"cvolton.betterinfo": ">=4.3.20"
         
 	},
 
