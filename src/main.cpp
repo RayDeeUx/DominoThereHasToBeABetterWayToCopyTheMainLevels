@@ -11,7 +11,7 @@ using namespace geode::prelude;
 bool shouldCopy = false;
 GJGameLevel* levelToCopy = nullptr;
 
-constexpr std::array<std::pair<std::string_view,int>, 3> table{{
+constexpr std::array<std::pair<std::string_view,int>, 4> table{{
 	{"The Tower", 5001},
 	{"The Sewers", 5002},
 	{"The Cellar", 5003},
