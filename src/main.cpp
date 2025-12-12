@@ -49,7 +49,7 @@ class $modify(InfoPopupHook, FLAlertLayer) {
 		);
 		cButton->setID("copy-main-level-button"_spr);
 
-		cButton->setPositionX(cButton->getPositionX() - (m_mainLayer->getChildByType<CCScale9Sprite>(0)->getContentWidth() / 2) + (cButton->getContentWidth() / 2) - 20);
+		cButton->setPositionX(cButton->getPositionX() - (m_mainLayer->getChildByType<CCScale9Sprite>(0)->getContentWidth() / 2) + (cButton->getContentWidth() / 2) + 20);
 
 		m_buttonMenu->addChild(cButton);
 	}
