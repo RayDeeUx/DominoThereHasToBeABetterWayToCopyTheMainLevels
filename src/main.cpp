@@ -58,7 +58,7 @@ class $modify(InfoPopupHook, FLAlertLayer) {
 			this, menu_selector(InfoPopupHook::onCopyMainLevel)
 		);
 
-		cButton->setPositionX(cButton->getPositionX() - (width / 2) + (cButton->getContentWidth() / 2));
+		cButton->setPositionX(cButton->getPositionX() - (width / 2) + (cButton->getContentWidth() / 2) - 20);
 
 		m_buttonMenu->addChild(cButton);
 
