@@ -48,7 +48,6 @@ class $modify(InfoPopupHook, FLAlertLayer) {
 			shouldCopy = true;
 			levelToCopy = level;
 		} else if (!CCScene::get()->getChildByType<LevelSelectLayer>(0) && !CCScene::get()->getChildByType<LevelAreaInnerLayer>(0)) {
-			log::info("BRUH");
 			shouldCopy = false;
 			levelToCopy = nullptr;
 			return true;
@@ -59,7 +58,7 @@ class $modify(InfoPopupHook, FLAlertLayer) {
 			this, menu_selector(InfoPopupHook::onCopyMainLevel)
 		);
 
-		cButton->setPositionX(cButton->getPositionX() - 61.f);
+		cButton->setPositionX(cButton->getPositionX() - (width / 2) + (cButton->getContentWidth() / 2));
 
 		m_buttonMenu->addChild(cButton);
 
