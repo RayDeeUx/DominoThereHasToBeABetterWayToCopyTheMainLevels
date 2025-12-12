@@ -75,11 +75,6 @@ class $modify(InfoPopupHook, FLAlertLayer) {
 		return true;
 	}
 
-	void show() {
-		FLAlertLayer::show();
-		InfoPopupHook::addCopyButton();
-	}
-
 	void onCopyMainLevel(CCObject* sender) {
         if (!shouldCopy || !levelToCopy) return;
 		// code adapted from zmx/qimiko under the mozilla public license 2.0
