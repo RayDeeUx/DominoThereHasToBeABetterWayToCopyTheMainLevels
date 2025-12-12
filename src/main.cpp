@@ -34,6 +34,26 @@ class $modify(InfoPopupHook, FLAlertLayer) {
 		}
 	};
 
+	void addCopyButton() {
+		if (!m_buttonMenu || m_buttonMenu->getChildByID("copy-main-level-button"_spr)) return;
+		if (!shouldCopy || !levelToCopy) return;
+		else if (!CCScene::get()->getChildByType<LevelSelectLayer>(0) && !CCScene::get()->getChildByType<LevelAreaInnerLayer>(0)) {
+			shouldCopy = false;
+			levelToCopy = nullptr;
+			return;
+		}
+
+		auto cButton = CCMenuItemSpriteExtra::create(
+			ButtonSprite::create("Copy Level", 80, 0, 0.6f, true, "goldFont.fnt", "GJ_button_04.png", 25.0f),
+			this, menu_selector(InfoPopupHook::onCopyMainLevel)
+		);
+		cButton->setID("copy-main-level-button"_spr);
+
+		cButton->setPositionX(cButton->getPositionX() - (width / 2) + (cButton->getContentWidth() / 2) - 20);
+
+		m_buttonMenu->addChild(cButton);
+	}
+
 	bool init(FLAlertLayerProtocol* p0, char const* title, gd::string desc, char const* btn1, char const* btn2, float width, bool scroll, float height, float textScale) {
 		if (!FLAlertLayer::init(p0, title, desc, btn1, btn2, width, scroll, height, textScale)) return false;
 		if (!title) return true;
@@ -47,22 +67,16 @@ class $modify(InfoPopupHook, FLAlertLayer) {
 			if (!level || level->m_levelID.value() < 1) return true;
 			shouldCopy = true;
 			levelToCopy = level;
-		} else if (!CCScene::get()->getChildByType<LevelSelectLayer>(0) && !CCScene::get()->getChildByType<LevelAreaInnerLayer>(0)) {
-			shouldCopy = false;
-			levelToCopy = nullptr;
-			return true;
 		}
 
-		auto cButton = CCMenuItemSpriteExtra::create(
-			ButtonSprite::create("Copy Level", 80, 0, 0.6f, true, "goldFont.fnt", "GJ_button_04.png", 25.0f),
-			this, menu_selector(InfoPopupHook::onCopyMainLevel)
-		);
-
-		cButton->setPositionX(cButton->getPositionX() - (width / 2) + (cButton->getContentWidth() / 2) - 20);
-
-		m_buttonMenu->addChild(cButton);
+		InfoPopupHook::addCopyButton();
 
 		return true;
+	}
+
+	void show() {
+		FLAlertLayer::show();
+		InfoPopupHook::addCopyButton();
 	}
 
 	void onCopyMainLevel(CCObject* sender) {
