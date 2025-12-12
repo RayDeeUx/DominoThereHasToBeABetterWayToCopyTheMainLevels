@@ -12,3 +12,7 @@
 
 # 1.0.4
 - Fixed Back On Track bug.
+
+# 1.0.5
+- Fixed Electroman Adventures bug
+- Fixed Back On Track copying bug (android)

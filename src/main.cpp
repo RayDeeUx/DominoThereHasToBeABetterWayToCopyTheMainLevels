@@ -62,7 +62,7 @@ static std::map<std::string, std::string> levelMapping = {
 	{"xStep", "xStep"},
 	{"Clutterfunk", "Clutterfunk"},
 	{"Theory of Everything", "Theory of Everything"},
-	{"Electroman Adventure", "Electroman Adventure"},
+	{"Electroman Adventures", "Electroman Adventure"},
 	{"Clubstep", "Clubstep"},
 	{"Electrodynamix", "Electrodynamix"},
 	{"Hexagon Force", "Hexagon Force"},
