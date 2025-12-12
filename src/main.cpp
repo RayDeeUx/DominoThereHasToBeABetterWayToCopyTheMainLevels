@@ -40,7 +40,7 @@ class $modify(InfoPopupHook, FLAlertLayer) {
 		if (!shouldCopy || !levelToCopy) {
 			if (!CCScene::get() || !CCScene::get()->getChildByType<LevelAreaInnerLayer>(0)) return true;
 
-			const int towerLevelID = levelNameToLevelID(title);
+			auto towerLevelID = levelNameToLevelID(title);
 			if (towerLevelID < 5001) return true;
 
 			auto level = typeinfo_cast<GJGameLevel*>(GameLevelManager::sharedState()->m_mainLevels->objectForKey(fmt::to_string(towerLevelID)));
