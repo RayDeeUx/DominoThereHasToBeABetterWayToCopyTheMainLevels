@@ -2,27 +2,14 @@
 	"geode": "4.10.0",
 	"gd": {
 		"win": "2.2074",
-		"android": "2.2074",
 		"mac": "2.2074",
-		"ios": "2.2074"
+		"ios": "2.2074",
+		"android": "2.2074"
 	},
 	"id": "dominodev.copymainlevels",
 	"name": "Copy Main Levels",
 	"version": "v1.0.5",
 	"developer": "dominodev",
 	"description": "Copy main levels directly from their pages.",
-	"dependencies": {
-		"geode.node-ids": ">=v1.20.0",
-		"hjfod.gmd-api":  ">=1.4.1",
-		"cvolton.betterinfo": ">=4.3.20"
-        
-	},
-
-	"resources": {
-		"files": [
-			"resources/*.gmd"
-		]
-	},
-
 	"tags": ["offline", "utility", "enhancement"]
 }
