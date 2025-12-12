@@ -64,7 +64,7 @@ class $modify(MyLevelAreaInnerLayer, LevelAreaInnerLayer) {
 		LevelAreaInnerLayer::onLevelInfo(sender);
 		shouldCopy = false;
 		levelToCopy = nullptr;
-        auto level = GameLevelManager::sharedState()->m_mainLevels->objectForKey(fmt::to_string(static_cast<CCMenuItemSpriteExtra*>(sender)->getTag()));
+        auto level = typeinfo_cast<GJGameLevel*>(GameLevelManager::sharedState()->m_mainLevels->objectForKey(fmt::to_string(static_cast<CCMenuItemSpriteExtra*>(sender)->getTag())));
 		if (!level || level->m_levelID.value() < 1) return;
 		shouldCopy = true;
 		levelToCopy = level;
