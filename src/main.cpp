@@ -38,13 +38,25 @@ class $modify(InfoPopupHook, FLAlertLayer) {
 		if (!FLAlertLayer::init(p0, title, desc, btn1, btn2, width, scroll, height, textScale)) return false;
 		if (!title) return true;
 		if (!shouldCopy || !levelToCopy) {
-			if (!CCScene::get() || !CCScene::get()->getChildByType<LevelAreaInnerLayer>(0)) return true;
+			log::info("checking if in the tower");
+			if (!CCScene::get() || !CCScene::get()->getChildByType<LevelAreaInnerLayer>(0)) {
+				log::info("not in the tower");
+				return true;
+			}
 
 			auto towerLevelID = levelNameToLevelID(title);
-			if (!towerLevelID || *towerLevelID < 5001) return true;
+			if (!towerLevelID || *towerLevelID < 5001) {
+				log::info("level ID not found in map");
+				return true;
+			}
 
 			auto level = typeinfo_cast<GJGameLevel*>(GameLevelManager::sharedState()->m_mainLevels->objectForKey(fmt::to_string(*towerLevelID)));
-			if (!level || level->m_levelID.value() < 1) return true;
+			if (!level || level->m_levelID.value() < 1) {
+				log::info("no level found or level ID less than 1");
+				return true;
+			}
+
+			log::info("tower level found let's goooo");
 			shouldCopy = true;
 			levelToCopy = level;
 		}
